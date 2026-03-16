@@ -151,7 +151,7 @@ class Book:
             raise ValueError(f"Книга «{self._title}» уже выдана читателю")
         
         self._is_available = False
-        print(f"✅ Книга «{self._title}» успешно выдана читателю")
+        print(f"Книга «{self._title}» успешно выдана читателю")
     
     def return_book(self) -> None:
         """
@@ -167,7 +167,7 @@ class Book:
             raise ValueError(f"Книга «{self._title}» уже находится в библиотеке")
         
         self._is_available = True
-        print(f"✅ Книга «{self._title}» успешно возвращена в библиотеку")
+        print(f"Книга «{self._title}» успешно возвращена в библиотеку")
     
     def is_thick_book(self, threshold: int = 500) -> bool:
         """
