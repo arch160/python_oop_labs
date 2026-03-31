@@ -1,16 +1,8 @@
 from model import Book
 
-
-def print_separator(title: str) -> None:
-    """Вспомогательная функция для красивого вывода."""
-    print("\n" + "=" * 70)
-    print(f" {title} ")
-    print("=" * 70)
-
-
 def scenario_1_creation_and_magic():
     """Сценарий 1: Создание объектов и демонстрация магических методов."""
-    print_separator("СЦЕНАРИЙ 1: Создание книг и магические методы")
+    print("* СЦЕНАРИЙ 1: Создание книг и магические методы")
     
     # Создаём несколько книг
     book1 = Book("Война и мир", "Лев Толстой", 1869, 1300)
@@ -43,7 +35,7 @@ def scenario_1_creation_and_magic():
 
 def scenario_2_validation_and_setter():
     """Сценарий 2: Проверка валидации и работы setter'а."""
-    print_separator("СЦЕНАРИЙ 2: Валидация данных и setter")
+    print("* СЦЕНАРИЙ 2: Валидация данных и setter")
     
     # Корректное создание
     try:
@@ -91,7 +83,7 @@ def scenario_2_validation_and_setter():
 
 def scenario_3_state_and_behavior():
     """Сценарий 3: Работа с состоянием объекта и зависимое поведение."""
-    print_separator("СЦЕНАРИЙ 3: Состояние объекта и бизнес-методы")
+    print("* СЦЕНАРИЙ 3: Состояние объекта и бизнес-методы")
     
     # Создаём книгу
     book = Book("Мастер и Маргарита", "Михаил Булгаков", 1967, 480)
@@ -147,7 +139,7 @@ def scenario_3_state_and_behavior():
 
 def scenario_4_additional_features():
     """Сценарий 4: Дополнительные возможности и сложные сценарии."""
-    print_separator("СЦЕНАРИЙ 4: Дополнительные возможности")
+    print("* СЦЕНАРИЙ 4: Дополнительные возможности")
     
     # Работа с несколькими книгами
     print("Создаём библиотеку из нескольких книг:")
@@ -201,7 +193,6 @@ if __name__ == "__main__":
     scenario_3_state_and_behavior()
     scenario_4_additional_features()
     
-    print_separator("ИТОГ")
+    print("ИТОГ:")
     print("Все сценарии успешно выполнены!")
     print(f"Всего создано книг: {Book.total_books}")
-    print("=" * 70)
