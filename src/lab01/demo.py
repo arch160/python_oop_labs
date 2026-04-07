@@ -27,10 +27,6 @@ def scenario_1_creation_and_magic():
     print(f"   book1 == book3: {book1 == book3} (одинаковые автор и название)")
     print(f"   book1 == book2: {book1 == book2} (разные книги)")
     
-    # Демонстрация атрибута класса
-    print("\nАтрибут класса total_books:")
-    print(f"   Через класс Book: {Book.total_books}")
-    print(f"   Через экземпляр book1: {book1.total_books}")
 
 
 def scenario_2_validation_and_setter():
