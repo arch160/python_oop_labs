@@ -1,34 +1,34 @@
-def validate_title(title: str) -> None:
+def validate_name(name: str) -> None:
     """
     Проверяет корректность названия книги.
     
     Args:
-        title: название книги
+        name: название книги
         
     Raises:
         TypeError: если название не строка
         ValueError: если название пустое или состоит из пробелов
     """
-    if not isinstance(title, str):
+    if not isinstance(name, str):
         raise TypeError("Название должно быть строкой")
-    if not title or title.isspace():
+    if not name or name.isspace():
         raise ValueError("Название не может быть пустым")
 
 
-def validate_author(author: str) -> None:
+def validate_writer(writer: str) -> None:
     """
     Проверяет корректность имени автора.
     
     Args:
-        author: автор книги
+        writer: автор книги
         
     Raises:
         TypeError: если автор не строка
         ValueError: если автор пустой или состоит из пробелов
     """
-    if not isinstance(author, str):
+    if not isinstance(writer, str):
         raise TypeError("Автор должен быть строкой")
-    if not author or author.isspace():
+    if not writer or writer.isspace():
         raise ValueError("Автор не может быть пустым")
 
 

@@ -1,4 +1,4 @@
-from validate import validate_title, validate_author, validate_year, validate_pages
+from validate import validate_name, validate_writer, validate_year, validate_pages
 
 
 class Book:
@@ -9,24 +9,24 @@ class Book:
         total_books (int): общее количество созданных экземпляров книг
         
     Атрибуты экземпляра (закрытые):
-        _title (str): название книги
-        _author (str): автор книги
+        _name (str): название книги
+        _writer (str): автор книги
         _year (int): год издания
         _pages (int): количество страниц
         _is_available (bool): доступность книги (True - в библиотеке, False - выдана)
     """
     
     # Атрибут класса
-    total_books = 0
     
-    def __init__(self, title: str, author: str, year: int, 
+    def __init__(self, name: str, writer: str, year: int, 
                  pages: int, is_available: bool = True):
+
         """
         Конструктор класса Book.
         
         Args:
-            title: название книги
-            author: автор книги
+            name: название книги
+            writer: автор книги
             year: год издания
             pages: количество страниц
             is_available: доступность книги (по умолчанию True)
@@ -36,36 +36,40 @@ class Book:
             ValueError: при неверном значении данных
         """
         # Валидация всех входных данных
-        validate_title(title)
-        validate_author(author)
+        validate_name(name)
+
+        validate_writer(writer)
+
         validate_year(year)
+
         validate_pages(pages)
         
+
+
         # Закрытые атрибуты экземпляра
-        self._title = title.strip()
-        self._author = author.strip()
+        self._name = name.strip()
+        self._writer = writer.strip()
         self._year = year
         self._pages = pages
         self._is_available = is_available
         
-        # Увеличиваем счётчик созданных книг
-        Book.total_books += 1
-    
-    # === Свойства (геттеры) ===
-    
-    @property
-    def title(self) -> str:
-        """Возвращает название книги (только для чтения)."""
-        return self._title
+
+
+    # === Свойства ===
     
     @property
-    def author(self) -> str:
-        """Возвращает автора книги (только для чтения)."""
-        return self._author
+    def name(self) -> str:
+        """Возвращает название книги."""
+        return self._name
+    
+    @property
+    def writer(self) -> str:
+        """Возвращает автора книги."""
+        return self._writer
     
     @property
     def year(self) -> int:
-        """Возвращает год издания (только для чтения)."""
+        """Возвращает год издания."""
         return self._year
     
     @property
@@ -104,7 +108,7 @@ class Book:
             Красиво отформатированная строка с информацией о книге
         """
         status = "Книга в библиотеке" if self._is_available else "Книга выдана"
-        return (f"«{self._title}» | {self._author} | "
+        return (f"«{self._name}» | {self._writer} | "
                 f"{self._year} г. | {self._pages} стр. | {status}")
     
     def __repr__(self) -> str:
@@ -114,7 +118,7 @@ class Book:
         Returns:
             Строка, по которой можно воссоздать объект
         """
-        return (f"Book(title='{self._title}', author='{self._author}', "
+        return (f"Book(name='{self._name}', writer='{self._writer}', "
                 f"year={self._year}, pages={self._pages}, "
                 f"is_available={self._is_available})")
     
@@ -133,8 +137,8 @@ class Book:
         """
         if not isinstance(other, Book):
             return False
-        return (self._title.lower() == other._title.lower() and 
-                self._author.lower() == other._author.lower())
+        return (self._name.lower() == other._name.lower() and 
+                self._writer.lower() == other._writer.lower())
     
     # === Бизнес-методы ===
     
@@ -148,10 +152,10 @@ class Book:
             ValueError: если книга уже выдана
         """
         if not self._is_available:
-            raise ValueError(f"Книга «{self._title}» уже выдана читателю")
+            raise ValueError(f"Книга «{self._name}» уже выдана читателю")
         
         self._is_available = False
-        print(f"Книга «{self._title}» успешно выдана читателю")
+        print(f"Книга «{self._name}» успешно выдана читателю")
     
     def return_book(self) -> None:
         """
@@ -164,10 +168,10 @@ class Book:
             ValueError: если книга уже находится в библиотеке
         """
         if self._is_available:
-            raise ValueError(f"Книга «{self._title}» уже находится в библиотеке")
+            raise ValueError(f"Книга «{self._name}» уже находится в библиотеке")
         
         self._is_available = True
-        print(f"Книга «{self._title}» успешно возвращена в библиотеку")
+        print(f"Книга «{self._name}» успешно возвращена в библиотеку")
     
     def is_thick_book(self, threshold: int = 500) -> bool:
         """
@@ -181,17 +185,3 @@ class Book:
         """
         return self._pages > threshold
     
-    def get_info(self) -> dict:
-        """
-        Возвращает всю информацию о книге в виде словаря.
-        
-        Returns:
-            Словарь с атрибутами книги
-        """
-        return {
-            'title': self._title,
-            'author': self._author,
-            'year': self._year,
-            'pages': self._pages,
-            'is_available': self._is_available
-        }

@@ -125,16 +125,11 @@ def scenario_3_state_and_behavior():
     thin_book = Book("Детство", "Л.Н. Толстой", 1852, 150)
     thick_book = Book("Тихий Дон", "М.А. Шолохов", 1928, 1500)
     
-    print(f"   {thin_book.title}: {thin_book.pages} стр. -> "
+    print(f"   {thin_book.name}: {thin_book.pages} стр. -> "
           f"{'ТОЛСТАЯ' if thin_book.is_thick_book() else 'НЕ толстая'}")
-    print(f"   {thick_book.title}: {thick_book.pages} стр. -> "
+    print(f"   {thick_book.name}: {thick_book.pages} стр. -> "
           f"{'ТОЛСТАЯ' if thick_book.is_thick_book() else 'НЕ толстая'}")
     
-    # Демонстрация метода get_info
-    print("\nИнформация о книге в виде словаря:")
-    info = book.get_info()
-    for key, value in info.items():
-        print(f"   {key}: {value}")
 
 
 def scenario_4_additional_features():
@@ -158,12 +153,12 @@ def scenario_4_additional_features():
     
     # Пытаемся найти книгу по автору и названию
     print("\nПоиск книги '1984' Джорджа Оруэлла:")
-    search_title = "1984"
-    search_author = "Джордж Оруэлл"
+    search_name = "1984"
+    search_writer = "Джордж Оруэлл"
     
     found = None
     for book in books:
-        if book.title == search_title and book.author == search_author:
+        if book.name == search_name and book.writer == search_writer:
             found = book
             break
     
@@ -175,7 +170,7 @@ def scenario_4_additional_features():
     # Демонстрация порога для толстой книги
     print("\nИспользование разного порога для определения 'толстой' книги:")
     test_book = Book("Война и мир", "Толстой", 1869, 1300)
-    print(f"   Книга: {test_book.title}, {test_book.pages} стр.")
+    print(f"   Книга: {test_book.name}, {test_book.pages} стр.")
     print(f"   Порог 500: {'толстая' if test_book.is_thick_book(500) else 'не толстая'}")
     print(f"   Порог 1500: {'толстая' if test_book.is_thick_book(1500) else 'не толстая'}")
 
@@ -193,6 +188,3 @@ if __name__ == "__main__":
     scenario_3_state_and_behavior()
     scenario_4_additional_features()
     
-    print("ИТОГ:")
-    print("Все сценарии успешно выполнены!")
-    print(f"Всего создано книг: {Book.total_books}")
