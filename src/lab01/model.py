@@ -3,7 +3,7 @@ from validate import validate_name, validate_writer, validate_year, validate_pag
 
 class Book:
     """
-    Класс, представляющий книгу в библиотеке.
+    Класс, представляющий книгу в библиотеке
     
     Атрибуты класса:
         total_books (int): общее количество созданных экземпляров книг
