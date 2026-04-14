@@ -109,3 +109,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+f = Library()
+b5 = Book("Иван", "Михаил Булгаков", 1962, 433)
+b6 = Book("кан", "Достоевский", 1942, 1520)
+f.add(b5)
+f.add(b6)
+print(f.get_all())
+for m in f.get_all():
+    print(m)
+
+f.sort(key='name')      
+for m in f:         
+    print(m)
