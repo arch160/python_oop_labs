@@ -94,4 +94,7 @@ class Book:
     def is_thick_book(self, threshold: int = 500) -> bool:
         return self._pages > threshold
 
+    
+    def process(self):
+        return "У этой книги нет специального процесса"
 

@@ -44,10 +44,7 @@ def scenario_polymorphism():
 
     print("\n--- Полиморфный вызов process() ---")
     for book in lib:
-        if hasattr(book, 'process'):
-            print(f"{book.name}: {book.process()}")
-        else:
-            print(f"{book.name}: нет метода process")
+        print(book.process())
 
     print("\n--- Проверка типов через isinstance ---")
     for book in lib:
